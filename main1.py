@@ -1,4 +1,4 @@
-import LSTM1
+import LSTM
 import time
 import matplotlib.pyplot as plt
 import numpy as np
@@ -30,18 +30,18 @@ if __name__=='__main__':
 	seq_len = 22
 
 	print('> Loading data... ')
-	d = LSTM1.readCSV()
-	X_train, y_train, X_test, y_test = LSTM1.load_data(d, seq_len, True)
+	d = LSTM.readCSV()
+	X_train, y_train, X_test, y_test = LSTM.load_data(d, seq_len, True)
 	#print(X_train)
 	#print(y_train.shape)
 	#print(X_test)
 	#print(y_test.shape)
 	#print(y_train.shape)
 	print('> Data Loaded. Compiling...')
-	#LSTM1.batch_denormalization()
-	#model = LSTM1.build_model([13, 50, 100, 1])
-	#model = LSTM1.build_model([13, 50, 100, 13])
-	model = LSTM1.build_model2([6, 21, 1])
+	#LSTM.batch_denormalization()
+	#model = LSTM.build_model([13, 50, 100, 1])
+	#model = LSTM.build_model([13, 50, 100, 13])
+	model = LSTM.build_model2([6, 21, 1])
 	model.fit(
 	    X_train,
 	    y_train,
@@ -52,17 +52,17 @@ if __name__=='__main__':
 	predictions = model.predict(X_test)
 
 	#print(predictions)
-	#predictions = LSTM1.predict_sequences_multiple(model, X_test, seq_len-1, 50)
+	#predictions = LSTM.predict_sequences_multiple(model, X_test, seq_len-1, 50)
 	#print(predictions)
 	predictions = np.array(predictions)
-	#LSTM1.getUnnormalizedPrice()
+	#LSTM.getUnnormalizedPrice()
 	#valori di predizione denormalizzati
-	predictions = LSTM1.batch_denormalization(predictions)
-	#predictions = LSTM1.z_score_denormalization(predictions)
+	predictions = LSTM.batch_denormalization(predictions)
+	#predictions = LSTM.z_score_denormalization(predictions)
 	y_test_denormalized = []
-	y_test_denormalized = LSTM1.batch_denormalization(y_test)
-	#y_test_denormalized = LSTM1.z_score_denormalization(y_test)
-	acc = LSTM1.calculate_Accuracy(predictions,y_test_denormalized)
+	y_test_denormalized = LSTM.batch_denormalization(y_test)
+	#y_test_denormalized = LSTM.z_score_denormalization(y_test)
+	acc = LSTM.calculate_Accuracy(predictions,y_test_denormalized)
 	print('Evaluation: ',acc)
 	score = metrics.mean_squared_error(predictions, y_test_denormalized)
 	#print(predictions)
