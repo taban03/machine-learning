@@ -1,4 +1,4 @@
-# Tools
+# LSTM Neural Network for Stock Forecast
 
 ## How to install TensorFlow
 
