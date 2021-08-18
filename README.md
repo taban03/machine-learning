@@ -1,4 +1,5 @@
 # LSTM Neural Network for Stock Forecast
+This project contains an implementation of a LSTM NN which allows to perform a technical analysis of market stocks. The ML model is built by using TensorFlow+Keras.
 
 ## How to install TensorFlow
 
